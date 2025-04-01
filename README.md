@@ -1,7 +1,7 @@
 # AI-Enhanced-Scientific-Paper-Retrieval-Leveraging-LangChain-and-LangGraph-for-Scholarly-Research
 
 ## Description 
-This application leverages Artificial Intelligence techniques to automate the search for scientific papers on Google Scholar, arXiv and Semantic Scholar. It utilizes LangChain and LangGraph to orchestrate AI agents specialized in retrieving and analyzing academic papers.
+This application leverages Artificial Intelligence techniques to automate the search for scientific papers on Google Scholar and arXiv. It utilizes LangChain and LangGraph to orchestrate AI agents specialized in retrieving and analyzing academic papers.
 
 ## Technologies Used
 - Python: Main language of the project.
@@ -9,7 +9,6 @@ This application leverages Artificial Intelligence techniques to automate the se
 - LangGraph: To create robust and scalable retrieval pipelines
 - Google Scholar API.
 - arXiv API
-- Semantic Scholar API
 
 ## Key Features
 - Automated search for paper in the three aforementioned archives.
