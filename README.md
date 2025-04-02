@@ -8,7 +8,6 @@ This application leverages Artificial Intelligence techniques to automate the se
 - LangChain: For managing AI workflows and LLM integration.
 - LangGraph: To create robust and scalable retrieval pipelines
 - Google Scholar API.
-- arXiv API
 
 ## Key Features
 - Automated search for paper in the three aforementioned archives.
