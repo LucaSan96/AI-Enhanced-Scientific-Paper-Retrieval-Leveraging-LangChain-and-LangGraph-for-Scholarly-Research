@@ -1,13 +1,16 @@
 import  requests
 from xml.etree import ElementTree as ET
+from datetime import datetime
 
 # Search for papers on arXiv
-def search_arxiv(query, max_results=5):
+def search_arxiv(query, max_results=5, start_year=None, end_year=None):
     """Search for papers on arXiv using a query string.
     
     Args:
         query (str): The search query string.
         max_results (int): The maximum number of results to return.
+        start_year (int, optional): The start year for filtering results. Defaults to None.
+        end_year (int, optional): The end year for filtering results. Defaults to None.
     
     Returns:
         list: A list of dictionaries containing paper information.
@@ -29,14 +32,24 @@ def search_arxiv(query, max_results=5):
             published = paper.find('{http://www.w3.org/2005/Atom}published').text
             summary = paper.find('{http://www.w3.org/2005/Atom}summary').text
             link = paper.find('{http://www.w3.org/2005/Atom}link').attrib['href']
+
+            #convert published date to datetime object
+            published_date = datetime.strptime(published, '%Y-%m-%dT%H:%M:%SZ')
+            # Filter by year if specified
+            if (start_year and published_date < start_year) or (end_year and published_date > end_year):
+                continue
             
             papers.append({
                 'title': title,
                 'authors': authors,
                 "published": published,
                 'summary': summary,
+                'year': published_date,
                 'link': link
             })
+        
+        # Sort papers by published date
+        papers = sorted(papers, key=lambda x: x['year'], reverse=True)
         
         return papers
     
